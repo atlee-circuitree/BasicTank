@@ -30,7 +30,7 @@ public class RobotContainer {
     // Add autonomous options...
     autoSelecter.setDefaultOption("Nothing", null);
     autoSelecter.addOption("Drive Forward", 
-    new DriveWithTimers(drivetrain, false, .3, 10));
+    new DriveWithTimers(drivetrain, false, .3, 5));
     autoSelecter.addOption("Turn Left", 
     new DriveWithTimers(drivetrain, true, .3, 5));
 
@@ -38,7 +38,7 @@ public class RobotContainer {
     // You can add a timeout if your command does not have an end condition (ours does, but I added one as an example)
     autoSelecter.addOption("Drive Forward & Turn Left", 
     new SequentialCommandGroup(
-    new DriveWithTimers(drivetrain, false, .3, 10).withTimeout(8),
+    new DriveWithTimers(drivetrain, false, .3, 5).withTimeout(8),
     new DriveWithTimers(drivetrain, true, .3, 5))
     );
 
@@ -47,7 +47,7 @@ public class RobotContainer {
     autoSelecter.addOption("Shuffleboard Auto",
     new DriveWithShuffleboard(drivetrain));
 
-    // Bind commands to buttons...
+    // Binds commands to buttons...
     configureBindings();
 
     // Set default commands...
