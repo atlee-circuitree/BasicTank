@@ -1,7 +1,9 @@
 package frc.robot;
  
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -13,13 +15,13 @@ import frc.robot.subsystems.Drivetrain;
 public class RobotContainer {
   
   // Define any controllers used in the program...
-  private final XboxController xbox1 = new XboxController(0);
+  private final Joystick joy1 = new Joystick(0);
  
   // Define our subsystems to assign to commands...
   private final Drivetrain drivetrain = new Drivetrain();
 
   // Define our commands to assign to buttons...
-  private final Drive driveRobot = new Drive(drivetrain, xbox1);
+  private final Drive driveRobot = new Drive(drivetrain, joy1);
   
   // Create an autonomous selector on the Shuffleboard...
   SendableChooser<Command> autoSelecter = new SendableChooser<Command>();
@@ -59,11 +61,11 @@ public class RobotContainer {
   private void configureBindings() {
 
     // Create new buttons and assign them to commands...
-    JoystickButton Controller1_A = new JoystickButton(xbox1, XboxController.Button.kA.value);
-    JoystickButton Controller1_B = new JoystickButton(xbox1, XboxController.Button.kB.value);
+    JoystickButton Controller1_A = new JoystickButton(joy1, 0);
+    JoystickButton Controller1_B = new JoystickButton(joy1, 1);
 
-    Controller1_A.onTrue(null); 
-    Controller1_B.onTrue(null);
+    //Controller1_A.onTrue(null); 
+    //Controller1_B.onTrue(null);
  
   }
  
@@ -71,7 +73,8 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
 
     // Returns the selected option...
-    return autoSelecter.getSelected();
+    //return autoSelecter.getSelected();
+    return new DriveWithTimers(drivetrain, true, .2, 5);
 
   }
 }

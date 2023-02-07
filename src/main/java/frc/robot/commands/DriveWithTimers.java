@@ -25,6 +25,8 @@ public class DriveWithTimers extends CommandBase {
     speed = PercentSpeed;
     time = Seconds;
 
+    timer = new Timer();
+
     addRequirements(drivetrain);
  
   }
@@ -32,9 +34,7 @@ public class DriveWithTimers extends CommandBase {
   @Override
   // Code to run ONCE when the command starts
   public void initialize() {
-
-    // Reset and start the timer...
-    timer.reset();
+    
     timer.start();
 
   }

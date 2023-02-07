@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
@@ -8,12 +9,13 @@ public class Drive extends CommandBase {
  
   // Define basic objects for this command...
   public XboxController xbox;
+  public Joystick joy;
   public Drivetrain drivetrain;
 
   // Assign basic objects and set requirements...
-  public Drive(Drivetrain DrivetrainSubsystem, XboxController XboxController) {
-
-    xbox = XboxController;
+  public Drive(Drivetrain DrivetrainSubsystem, Joystick Joystick) {
+ 
+    joy = Joystick;
     drivetrain = DrivetrainSubsystem;
     
     addRequirements(drivetrain);
@@ -31,7 +33,7 @@ public class Drive extends CommandBase {
   public void execute() {
 
   // Use the xbox controller to power the robot...
-  drivetrain.driveRobotTeleop(xbox.getLeftX(), xbox.getLeftY());
+  drivetrain.driveRobotTeleop(joy.getX(), joy.getY());
 
   }
  

@@ -5,10 +5,10 @@ public final class Constants {
 // We store our motor ports and other useful numbers here
 
 // Motor Ports...
-public static final int frontLeftDrivePort = 0;
-public static final int frontRightDrivePort = 0;
-public static final int rearLeftDrivePort = 0;
-public static final int rearRightDrivePort = 0;
+public static final int frontLeftDrivePort = 1;
+public static final int frontRightDrivePort = 4;
+public static final int rearLeftDrivePort = 2;
+public static final int rearRightDrivePort = 3;
 
 // Useful Numbers...
 public static final double timerToInches = 0;

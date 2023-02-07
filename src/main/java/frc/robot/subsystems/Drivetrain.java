@@ -9,6 +9,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -28,6 +29,9 @@ public class Drivetrain extends SubsystemBase {
   */
 
   DifferentialDrive robotDrive;
+  
+  MotorControllerGroup leftDrive;
+  MotorControllerGroup rightDrive;
 
   // Variables for Shuffleboard autonomous control...
   public boolean isTurningShuffle;
@@ -47,6 +51,11 @@ public class Drivetrain extends SubsystemBase {
     rearLeftMotor = new TalonFX(Constants.rearLeftDrivePort);
     rearRightMotor = new TalonFX(Constants.rearRightDrivePort);
     */
+
+    leftDrive = new MotorControllerGroup(frontLeftMotor, rearLeftMotor);
+    rightDrive = new MotorControllerGroup(frontRightMotor, rearRightMotor);
+
+    robotDrive = new DifferentialDrive(leftDrive, rightDrive);
 
     // Set the right side inverted...
     frontLeftMotor.setInverted(false);
